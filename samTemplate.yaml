@@ -11,7 +11,7 @@ Resources:
       Description: 'Lambda function for Demo'
       MemorySize: 128
       Timeout: 30
-      Role: 'arn:aws:iam::551638562717:role/MyLambdaRole'
+      Role: 'arn:aws:iam::551638562717:role/service-role/MyLambdaRole'
       Events:
         getAZsAPI:
           Type: Api
