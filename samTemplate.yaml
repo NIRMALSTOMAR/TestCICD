@@ -27,11 +27,3 @@ Outputs:
    LambdaCDApi:
       Description: "API Gateway endpoint URL for getAZs function"
       Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/getazs/"
-
-    LambdaCD:
-      Description: "Demo Lambda Function ARN"
-      Value: !GetAtt LambdaCD.Arn
-
-    LambdaCDFunctionIamRole:
-      Description: "Implicit IAM Role created for LambdaCD function"
-      Value: !GetAtt HelloWorldFunctionRole.Arn
