@@ -1,4 +1,4 @@
-# LambdaDeployment
+# Lambda Deployment through Code Pipeline
 
 Serverless Application Model (AWS SAM)
 You can use SAM to define serverless applications in simple and clean syntax.
