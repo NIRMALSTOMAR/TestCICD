@@ -1,29 +1,26 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: 'AWS::Serverless-2016-10-31'
-Description: Demo Lambda
+Description: >-
+  A simple backend (read/write to DynamoDB) with a RESTful API endpoint using
+  Amazon API Gateway.
 Resources:
-  LambdaCD:
+  DynamoDBMicroService:
     Type: 'AWS::Serverless::Function'
     Properties:
       Handler: lambda_function.lambda_handler
       Runtime: python3.6
-      CodeUri: ./LambdaCode
-      Description: 'Lambda function for Demo'
-      MemorySize: 128
-      Timeout: 30
-      Role: 'arn:aws:iam::551638562717:role/LambdaDeploymentStack-CDDemoLambdaRole-1QN6X8EUGQC8W'
+      CodeUri: .
+      Description: >-
+        A simple backend (read/write to DynamoDB) with a RESTful API endpoint
+        using Amazon API Gateway.
+      MemorySize: 256
+      Timeout: 10
+      Role: 'arn:aws:iam::551638562717:role/service-role/MicroServiceRole'
       Events:
-        getAZsAPI:
+        Api1:
           Type: Api
           Properties:
-            Path: /getazs
-            Method: get
-      Environment:
-        Variables:
-          REGION: us-east-1
-
-Outputs:
-
-   LambdaCDApi:
-      Description: "API Gateway endpoint URL for getAZs function"
-      Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/getazs/"
+            Path: /DynamoDBMicroService
+            Method: ANY
+      Tags:
+        'lambda-console:blueprint': microservice-http-endpoint-python3
